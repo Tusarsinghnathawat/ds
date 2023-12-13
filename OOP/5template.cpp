@@ -7,25 +7,25 @@ template <typename T> void input(T x[], int n){
 	for(int i = 0; i < n; i++)
 		cin >> x[i];
 }
-
-template <typename T> void sort(T x[], int n){
-	for (int i = 0; i < n-1; i++) {
-		int min_idx = i;
-        for (int j = i+1; j < n; j++){
-            if (x[j] < x[min_idx]){
-                min_idx = j;
+// Selection Sort
+template <typename T> void sort(T arr[], int size){
+	for (int i = 0; i < size-1; i++) {
+		int minInd = i;
+        for (int j = i+1; j < size; j++){
+            if (arr[j] < arr[minInd]){
+                minInd = j;
             }
         }
-        T temp = x[min_idx];
-    	x[min_idx] = x[i];
+        T temp = x[minInd];
+    	x[minInd] = x[i];
         x[i] = temp;
     }
 }
 
-template <typename T> void output(T x[], int n){
+template <typename T> void output(T arr[], int size){
 	cout << "Array after sorting is: ";
-	for(int i = 0; i < n; i++)
-		cout << x[i] << " ";
+	for(int i = 0; i < size; i++)
+		cout<<arr[i]<<" ";
 }
 
 int main(){
