@@ -6,14 +6,11 @@ struct rec{
     int chain;
 };
 
-class Hashing
-{
+class Hashing{
     public:
     rec hashtable[10];
-    Hashing()
-    {
-        for(int i=0;i<10;i++)
-        {
+    Hashing(){
+        for(int i=0;i<10;i++){
             hashtable[i].key=-1;
             hashtable[i].chain=-1;
         }
@@ -25,23 +22,18 @@ class Hashing
     bool searching(int);
 };
 
-int Hashing::endOfChain(int tmp,int index)
-{
-    while(tmp!=-1)
-    {
+int Hashing::endOfChain(int tmp,int index){
+    while(tmp!=-1){
         index=tmp;
         tmp=hashtable[tmp].chain;         
     }
     return index;
 }
-int Hashing::vacantPos(int nxt)
-{
+int Hashing::vacantPos(int nxt){
     int gvn=nxt;
-    while(hashtable[nxt].key!=-1)
-    {
+    while(hashtable[nxt].key!=-1){
         nxt=(nxt+1)%10;
-        if(nxt==gvn)
-        {
+        if(nxt==gvn){
             cout<<"Table full !"<<endl;
             return -1;
         }
@@ -49,22 +41,18 @@ int Hashing::vacantPos(int nxt)
     return nxt;
 }
 
-void Hashing::insert(int r)
-{
+void Hashing::insert(int r){
    static int elements=0;
-    if(elements>10)
-    {
+    if(elements>10){
         cout<<"Table FULL, element cannot be inserted !"<<endl;
         return;
     }
     elements++;
     int ind=r%10;
-    if(hashtable[ind].key==-1)
-    {
+    if(hashtable[ind].key==-1){
         hashtable[ind].key=r;
     }
-    else if(hashtable[ind].key!=-1 && (hashtable[ind].key)%10==r%10)
-    {
+    else if(hashtable[ind].key!=-1 && (hashtable[ind].key)%10==r%10){
         int tmp=hashtable[ind].chain;
         int nxt=-1;                    
         int index=r%10;                
@@ -77,8 +65,7 @@ void Hashing::insert(int r)
         }
         return;
     }
-    else
-    {
+    else{
         int prev_index=ind;
         int prev_value=hashtable[ind].key;     //storing previous value of key and chain
         int prev_chain=hashtable[ind].chain;
@@ -103,18 +90,15 @@ void Hashing::insert(int r)
 bool Hashing::searching(int r)
 {
     int ind=r%10;
-    while(hashtable[ind].key!=-1 && (hashtable[ind].key)%10!=r%10)
-    {
+    while(hashtable[ind].key!=-1 && (hashtable[ind].key)%10!=r%10){
         ind=(ind+1)%10;
         if(hashtable[ind].key==r)return true;
         if(ind==r%10) return false;
     }
     if(hashtable[ind].key==-1)return false;
-    else
-    {
+    else{
         int fd;
-        while(hashtable[ind].chain!=-1)
-        {
+        while(hashtable[ind].chain!=-1){
            if(hashtable[ind].key==r)return true;
            ind=hashtable[ind].chain;
         }
@@ -123,30 +107,45 @@ bool Hashing::searching(int r)
     return false;
 }
 
-void Hashing::display()
-{
-    for(int i=0;i<10;i++)
-    {
+void Hashing::display(){
+    for(int i=0;i<10;i++){
         cout<<"Index :"<<i<<" "<<"Roll No :"<<hashtable[i].key<<" "<<"Chain :"<<hashtable[i].chain<<endl;
     }
 }
 
-int main()
-{
+int main(){
     Hashing hs;
-    hs.insert(131);
-    hs.insert(13);
-    hs.insert(14);
-    hs.insert(31);
-    hs.insert(51);
-    hs.insert(16);
-    hs.insert(71);
-    hs.insert(33);
-    hs.insert(22);
-    hs.insert(12);
-    hs.insert(77);
-    hs.insert(44);
+
+    cout<<"Enter the number of elements to be inserted : ";
+    int n;
+    cin>>n;
+    cout<<"Enter the elements : "<<endl;
+    while(n--){
+        int x;
+        cin>>x;
+        hs.insert(x);
+    }
+
+    cout<<"Enter the element to be searched : ";
+    int x;
+    cin>>x;
+    if(hs.searching(x))cout<<"Element is PRESENT"<<endl;
+    else cout<<"Element is ABSENT"<<endl;
 
     hs.display();
        
 }
+
+// Input:
+// 13
+// 131
+// 31
+// 14
+// 16
+// 81
+// 71
+// 33
+// 22
+// 42
+// 77
+// 14

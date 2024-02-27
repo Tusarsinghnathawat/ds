@@ -7,11 +7,8 @@ struct rec{
 };
 
 class Hashing{
-
     rec Hashtable[10];
-
     public:
-
     Hashing(){
         for(int i=0; i<10; i++) Hashtable[i].RollNo=-1;
     }
@@ -55,7 +52,7 @@ class Hashing{
         while(ele!=index && Hashtable[ele].RollNo!=roll){
             ele=(ele+1)%10;
         }
-        if(ele==index) cout<<"Element is ABSENT";
+        if(ele==index) cout<<"Element is ABSENT"<<endl;
         else{
             Hashtable[index].RollNo=-2;
             Hashtable[index].name="";
@@ -64,9 +61,9 @@ class Hashing{
 
     void display(){
         for(int i=0; i<10; i++){
-            cout<<Hashtable[i].RollNo<<": "<<Hashtable[i].name<<" ";
+            cout<<Hashtable[i].RollNo<<": "<<Hashtable[i].name<<endl;
         }
-        cout<<endl;
+        // cout<<endl;
     }
 };
 
@@ -126,4 +123,4 @@ int main(){
 // 11 Aryan
 // 62 Tushar
 // 21 Div
-// 19 Deep
+// 19 Deepanshu

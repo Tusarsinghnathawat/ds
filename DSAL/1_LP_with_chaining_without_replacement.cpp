@@ -142,20 +142,53 @@ void Hashing::display()
 int main()
 {
     Hashing hs;
-    hs.insert(131);
-    hs.insert(13);
-    hs.insert(14);
-    hs.insert(31);
-    hs.insert(51);
-    hs.insert(16);
-    hs.insert(71);
-    hs.insert(33);
-    hs.insert(22);
-    hs.insert(12);
-    hs.insert(44);
-    hs.display();
-    cout<<hs.searching(12)<<endl;    //element not present at correct hash index 
-    cout<<hs.searching(33)<<endl;    //element present in chain at correct hash index
-    cout<<hs.searching(32)<<endl;    //element not in chain
-    cout<<hs.searching(16)<<endl;    //element at correct hash index
+    // menu driven
+    int choice;
+    int roll;
+    while(1)
+    {
+        cout<<"1. Insert"<<endl;
+        cout<<"2. Search"<<endl;
+        cout<<"3. Display"<<endl;
+        cout<<"4. Exit"<<endl;
+        cout<<"Enter your choice : ";
+        cin>>choice;
+        switch(choice){
+            case 1:
+                cout<<"Enter the number of elements to be inserted : ";
+                int n;
+                cin>>n;
+                cout<<"Enter the elements : "<<endl;
+                while(n--){
+                    cin>>roll;
+                    hs.insert(roll);
+                }
+                break;
+            case 2:
+                cout<<"Enter the roll number to be searched : ";
+                cin>>roll;
+                if(hs.searching(roll))
+                {
+                    cout<<"Element found"<<endl;
+                }
+                else
+                {
+                    cout<<"Element not found"<<endl;
+                }
+                break;
+            case 3:
+                hs.display();
+                break;
+            case 4:
+                exit(0);
+                break;
+            default:
+                cout<<"Invalid choice"<<endl;
+        }
+    }
 }
+
+//     cout<<hs.searching(12)<<endl;    //element not present at correct hash index 
+//     cout<<hs.searching(33)<<endl;    //element present in chain at correct hash index
+//     cout<<hs.searching(32)<<endl;    //element not in chain
+//     cout<<hs.searching(16)<<endl;    //element at correct hash index
