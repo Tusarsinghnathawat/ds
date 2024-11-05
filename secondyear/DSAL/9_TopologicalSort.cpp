@@ -67,3 +67,18 @@ int main() {
 
     return 0;
 }
+
+
+// Input
+// 6 6
+// 5 2
+// 5 0
+// 4 0
+// 4 1
+// 2 3
+// 3 1
+
+// Output
+// Topological order: 5 4 2 3 1 0
+
+// Time Complexity: O(V+E)
