@@ -22,3 +22,9 @@ contract BankAccount {
         return balances[msg.sender];
     }
 }
+
+// 1. which solc && solc --version
+// 2. solc --abi --bin BankAccount.sol
+// 3. solc --abi --bin --output-dir . --overwrite BankAccount.sol
+// .bin - evm bytecode is long seq of number for evm, it gets deployed
+// .abi - ABI tells external applications (like Remix, web apps) how to talk to your contract
